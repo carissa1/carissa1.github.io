@@ -1,7 +1,7 @@
 
 ## Carissa's Web Page Projects
 
-You can see my [black belt project](Black%20Belt/index.html).
+You can see my [black belt project](carissa-pages/Black%20Belt/index.html).
 
 
 ### Markdown
