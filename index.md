@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Carissa's Web Page Projects</title>
-    </head>
 
-    <body>
-        <br> <br> <br> <br>
-        Carissa's Web Page Projects
-        <br> <br>
-        <a id="black belt" href="Black%20Belt/index.html">Black Belt game</a>
-    </body>
-</html>
 ## Carissa's Web Page Projects
 
 You can see my [black belt project](Black%20Belt/index.html).
