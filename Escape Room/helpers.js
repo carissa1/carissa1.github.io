@@ -22,9 +22,24 @@ hiddenPaper.src = "paper1.png";
 var arrowI = new Image();
 arrowI.src = "arrow.png"
 
+var couchI = new Image();
+couchI.src = "couch.png";
+
+var flashI = new Image();
+flashI.src = "flashlight.png";
+
+var char = new Image();
+char.src = "char.png";
+
+var BookOCI = new Image();
+BookOCI.src = "BookC.png";
+
+var KShow = false;
+
 var door = false;
 var door2 = false;
 var door3 = false;
+var door4 = false;
 
 var paperShown = false;
 var arrowShown = false;
@@ -33,26 +48,37 @@ var wrenchShown = false;
 
 var arrowShow = false;
 var goRight1 = false;
-var L1 = document.createElement("li");
 var noteChange = false;
-var L2 = document.createElement("li");
+var P1 = document.createElement("li");
+var P2 = document.createElement("li");
+var P3 = document.createElement("li");
+var P4 = document.createElement("li");
+var P5 = document.createElement("li");
 var arrowShow1 = false;
 var paperShow = false;
+var click = false;
+var yesL3 = true;
+var FLShow = false;
+
+var roar = new Audio()
+roar.src = "creepy.mp3"
+roar.load();
+
+var appleShow = false;
+var keyShow = false;
+var KShown = false;
+var KAShown = false;
+var clickOnce = false;
+var keyShown = false;
+var FLShown = false;
 
 /*real*/
 var next1 = false;
 var next2 = true;
 var next3 = true;
+var next4 = true;
 
 /*test level 3
 var next1 = true;
 var next2 = true;
 var next3 = false;*/
-
-var inputPush = document.getElementById("#push");
-var TextPush = document.getElementById("#pushT");
-var pushSubmit = document.getElementById("#submit");
-
-var answer;
-
-var clickYN = false;

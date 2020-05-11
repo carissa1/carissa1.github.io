@@ -22,13 +22,27 @@ var player = new Player(400, 50);
 //var wall = new Wall(player.x-player.width/2, player.y-player.height/2, 100, 10);
 var bad = new BadGuy(10, 300, 5);
 
+function Clickey(){
+    console.log("hi")
+    answer = prompt("What do you want to do to the couch?");
+    if(answer == "push" || answer == "Push"){
+        couch.x = couch.x + 200;
+        alert("right")
+        return;
+    }
+    else{
+        alert("That is not the answer.")
+        return;
+    }
+}
+
 // initialize our variables and start our game loop
 function startGame()
 {
     canvas = document.getElementById("gc");
     ctx = canvas.getContext("2d");
 
-    var fps = 30 / 1000;
+    var fps = 1000 / 30;
     window.setInterval(update, fps);
 }
 
@@ -44,6 +58,9 @@ function update()
 // handle inputs, handle player, handle enemies, etc
 function handleLogic()
 {
+    // setInterval(function(){
+    //     roar.play();
+    // }, 5000)
     if(checkCollisions(player, paper)){
         paperShow = true;
     }
@@ -108,10 +125,10 @@ function draw()
         }
         if(checkCollisions(player, wrench)){
             wrenchShow = true;
-            L1.innerHTML = "a wrench";
+            P1.innerHTML = "Wrench, 1";
             noteChange = true;
             note.y = 455;
-            document.body.appendChild(L1);
+            document.body.appendChild(P1);
             //Inventory();
         }
         if(wrenchShow){
@@ -148,8 +165,8 @@ function draw()
                     break;
                 case true:
                     keys[" "] = false;
-                    L2.innerHTML = "an apple";
-                    document.body.appendChild(L2);
+                    P2.innerHTML = "Apple, 3";
+                    document.body.appendChild(P2);
                     apple.x = 450;
                     apple.y = 200;
                     apple.width = 120;
@@ -166,38 +183,128 @@ function draw()
             }
         } 
     }
-    if(next3 == false){
+    function Clicked(){
         couch.draw();
+        //couch.style.draggable = "true";
+        document.addEventListener("click", Clickey)
+        click = true;
     }
-    if(clickYN){
-        couch.addEventListener("click", Clickey());
-        clickYN = false;
-    }
-        // if(checkCollisions(player, couch)){
-        //     inputPush.style.display = "inline-block";
-        //     TextPush.style.display = "inline-block";
-        //     pushSubmit.style.display = "inline-block";
-        // }
+    if(next3 == false){
+        document.getElementById("gc").style.filter = "brightness(20%)";
+        couchI.src = "couch2.png";
+        for(i = 0; i<2; i++){
+            L3[i].draw();
+        }
+        if(FLShow == true){
+            FL.draw();
+        }
+        if(yesL3 == true){
+            for(i = 0; i<3; i++){
+                L3S[i].draw();
+            }
+        }
+        if(KShow == true){
+            knife.draw();
+        }
+        if(clickOnce == false){
+            Clicked();
+            clickOne = true;
+        }
+        if(keys["1"] && click == true){
+            document.body.removeChild(P1);
+            wrenchShow = true;
+            wrench.x = board.x+20;
+            wrench.y = board.y+20;
+            wrench.width = 50;
+            wrench.height = 40;
+            window.setTimeout(function(){
+                yesL3 = false;
+                wrenchShow = false;
+                FLShow = true;
+            }, 1000);
+        }
+        if(checkCollisions(player, FL) && yesL3 == false){
+            FLShow = false;
+            FLShown = true;
+            P3.innerHTML = "Flashlight, 2";
+            document.body.appendChild(P3)
+            window.setTimeout(function(){
+                couch.x = 50;
+                // window.setTimeout(function(){
+                //     document.getElementById("gc").style.background = "url('darkRoom.jpg')";
+                //     document.getElementById("gc").style.backgroundSize = "cover";
+                //     couchI.style.filter = "brightness(20%)";
+                // }, 2000)
+            }, 2000)
+        }
+        if(yesL3 == false && keys["2"]){
+            flashI.src = "FL2.png";
+            FLShow = true;
+            FL.x = player.x + 10;
+            FL.y = player.y + 50;
+            document.getElementById("gc").style.filter = "brightness(50%)";
+            if(checkCollisions(FL, couch)){
+                couchI.src = "couch.png";
+            }
+            // if(checkCollisions(player, BO)){
+            //     BO.x = 200;
+            //     BO.y = 150;
+            //     BookOCI.src = "bookOpen.png";
+            // }
+        }
+        if(checkCollisions(player, BO) && KShown == false){
+            BO.x = 200;
+            BO.y = 150;
+            BO.width = 240;
+            BO.height = 180; 
+            BookOCI.src = "bookOpen.png";
+            KShow = true;
+            if(checkCollisions(player, knife)){
+                P4.innerHTML = "knife, 3";
+                document.body.appendChild(P4);
+                KShown = true;
+                KShow = false;
+            }
+            window.setTimeout(function(){
+                BO.x = 310;
+                BO.y = 465;
+                BO.width = 40;
+                BO.height = 30; 
+                BookOCI.src = "bookC.png";
+                KShow = false;
+                next4 = false;
+            }, 3000);
+        }
+        if(keys["3"] && KAShown == false && FLShown == true){
+            appleShow = true;
+            KShow = true;
+            apple.x = knife.x - 80;
+            apple.y = knife.y;
+            apple.width = 100;
+            apple.height = 100;
+            document.body.removeChild(P2);
+            document.body.removeChild(P4);
+            window.setTimeout(function(){
+                KShow = false;
+                appleShow = false;
+                keyShow = true;
+                KAShown = true;
+            }, 2000)
+        }
+        if(appleShow == true){
+            apple.draw();
+        }
+        if(keyShow == true){
+            key.draw();
+        }
+        if(checkCollisions(player, key) && KAShown == true){
+            P5.innerHTML = "Key";
+            document.body.appendChild(P5);
+            keyShow = false;
+            keyShown = true;
+        }
 
-    
+    }
 
     player.draw();  
-}
-
-function Clickey(){
-    console.log("hi")
-    answer = prompt("What do you want to do to the couch?");
-    if(answer == "push" || answer == "Push"){
-        couch.x = couch.x + 100;
-        alert("right")
-        return;
-    }
-    else{
-        alert("That is not the answer. Hint(push)")
-        return;
-    }
-}
-
-function Hi(){
-    alert("hi")
 }

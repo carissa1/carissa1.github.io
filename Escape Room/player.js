@@ -3,7 +3,7 @@ function Player(x, y) {
     this.y = y;
     this.width = 90;
     this.height = 95;
-    this.speed = 1;
+    this.speed = 7;
 }
 
 Player.prototype.HI = function () {
@@ -15,6 +15,7 @@ Player.prototype.HI = function () {
     }
     if (keys["ArrowRight"]) {
         this.x += this.speed
+        // char = "char2.png";
     }
     if (keys["ArrowLeft"]) {
         this.x -= this.speed;
@@ -50,10 +51,6 @@ Player.prototype.HI = function () {
 //         var coords = "X coords: " + x1 + ", Y coords: " + y1;
 //     }
 
-
-
-var char = new Image();
-char.src = "char.png";
 
 Player.prototype.draw = function () {
     ctx.drawImage(char, this.x, this.y, this.width, this.height);
