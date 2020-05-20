@@ -37,7 +37,7 @@ Code.prototype.draw = function(){
     ctx.drawImage(codeI, this.x, this.y, this.width, this.height);
 }
 
-var door = new Door(300, 280);
+var Door123 = new Door(300, 280);
 var safe = new Safe(100, 405);
 var table = new Table(100, 480);
 var code = new Code(100, 300);

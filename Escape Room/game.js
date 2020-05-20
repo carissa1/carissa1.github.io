@@ -35,7 +35,20 @@ function Clickey(){
         return;
     }
 }
-
+function OpenSafe(){
+    answer1 = prompt("what is the code to open the safe?");
+    if(answer1 == "65792"){
+        doorShow = true;
+        clicked1 = true;
+    }
+    else{
+        alert("That is not the answer");
+        clicked1 = true;
+        window.setTimeout(function(){
+            clicked1 = false;
+        }, 2000)
+    }
+}
 // initialize our variables and start our game loop
 function startGame()
 {
@@ -208,10 +221,7 @@ function draw()
         if(KShow == true){
             knife.draw();
         }
-        if(clickOnce == false){
-            Clicked();
-            clickOne = true;
-        }
+        Clicked();
         if(keys["1"] && click == true){
             document.body.removeChild(P1);
             wrenchShow = true;
@@ -306,6 +316,9 @@ function draw()
             // door3 = true;
         }
     }
+    function OpenSafeCheck(){
+        OpenSafe();
+    }
     if(next4 == false){
         for(var i = 0; i<2; i++){
             level4[i].draw();
@@ -328,22 +341,24 @@ function draw()
         }
         if(keys[" "]){
             if(clicked1 == false){
-                answer1 = prompt("what is the code to open the safe?");
-                if(answer1 == "65792"){
-                    doorShow = true;
-                    clicked1 = true;
-                }
-                else{
-                    alert("That is not the answer");
-                    clicked1 = true;
-                    document.setTimeout(function(){
-                        clicked1 = false;
-                    }, 2000)
-                }
+                OpenSafeCheck();
             }
+        //         answer1 = prompt("what is the code to open the safe?");
+        //         if(answer1 == "65792"){
+        //             doorShow = true;
+        //             clicked1 = true;
+        //         }
+        //         else{
+        //             alert("That is not the answer");
+        //             clicked1 = true;
+        //             document.setTimeout(function(){
+        //                 clicked1 = false;
+        //             }, 2000)
+        //         }
+        //     }
         }
         if(doorShow == true){
-            door.draw();
+            Door123.draw();
         }
         if(keys["4"]){
             doorI.src = "DoorO.png";
