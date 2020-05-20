@@ -34,6 +34,9 @@ char.src = "char.png";
 var BookOCI = new Image();
 BookOCI.src = "BookC.png";
 
+var doorI = new Image();
+doorI.src = "DoorC.png";
+
 var KShow = false;
 
 var door = false;
@@ -45,10 +48,15 @@ var paperShown = false;
 var arrowShown = false;
 var appleShown = false;
 var wrenchShown = false;
+var answer1;
+var doorShow = false;
+var clicked1 = false;
 
 var arrowShow = false;
 var goRight1 = false;
 var noteChange = false;
+var pageShow = false;
+var P6 = document.createElement("li");
 var P1 = document.createElement("li");
 var P2 = document.createElement("li");
 var P3 = document.createElement("li");
@@ -78,7 +86,8 @@ var next2 = true;
 var next3 = true;
 var next4 = true;
 
-/*test level 3
+/*test level 4
 var next1 = true;
 var next2 = true;
-var next3 = false;*/
+var next3 = true;
+var next4 = false;*/

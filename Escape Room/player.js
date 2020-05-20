@@ -27,6 +27,9 @@ Player.prototype.HI = function () {
     else if(this.x > 530 && door2 == true){
         door3 = false;
     }
+    else if(this.x > 530 && door3 == true){
+        door3 = true;
+    }
     else if ((this.x > 530 && door == false) || (this.x > 530 && door2 == false) || (this.x > 530 && door3 == false)) {
         this.x = 530;
     }

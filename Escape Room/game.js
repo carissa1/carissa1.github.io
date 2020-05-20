@@ -107,6 +107,8 @@ function draw()
         }
         if(checkCollisions(player, book2[2])){
             arrowShow = true;
+            P6.innerHTML = "Paper, 5(level 4)";
+            document.body.appendChild(P6);
         }
         if(arrowShow && arrowShow1){
             arrowShown = true;
@@ -272,7 +274,6 @@ function draw()
                 BO.height = 30; 
                 BookOCI.src = "bookC.png";
                 KShow = false;
-                next4 = false;
             }, 3000);
         }
         if(keys["3"] && KAShown == false && FLShown == true){
@@ -298,12 +299,57 @@ function draw()
             key.draw();
         }
         if(checkCollisions(player, key) && KAShown == true){
-            P5.innerHTML = "Key";
+            P5.innerHTML = "Key, 4";
             document.body.appendChild(P5);
             keyShow = false;
             keyShown = true;
+            // door3 = true;
         }
-
+    }
+    if(next4 == false){
+        for(var i = 0; i<2; i++){
+            level4[i].draw();
+        }
+        if(pageShow == true){
+            code.draw();     
+        }
+        if(keys["2"]){
+            flashI.src = "FL2.png";
+            FLShow = true;
+            FL.x = player.x + 10;
+            FL.y = player.y + 50;
+            document.getElementById("gc").style.filter = "brightness(50%)";
+        }
+        if(keys["5"]){
+            pageShow = true;
+            window.setTimeout(function(){
+                pageShow = false;
+            }, 2000)
+        }
+        if(keys[" "]){
+            if(clicked1 == false){
+                answer1 = prompt("what is the code to open the safe?");
+                if(answer1 == "65792"){
+                    doorShow = true;
+                    clicked1 = true;
+                }
+                else{
+                    alert("That is not the answer");
+                    clicked1 = true;
+                    document.setTimeout(function(){
+                        clicked1 = false;
+                    }, 2000)
+                }
+            }
+        }
+        if(doorShow == true){
+            door.draw();
+        }
+        if(keys["4"]){
+            doorI.src = "DoorO.png";
+            doorShow = true;
+            document.body.removeChild(P5);
+        }
     }
 
     player.draw();  

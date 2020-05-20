@@ -13,19 +13,19 @@ function checkDoor(){
         door2 = false;
         door3 = true;
     }
-    if(player.x > 530 && door2 == true){
+    if(player.x >= 530 && door2 == true){
         New2();
         door2 = false;
         door = false;
         door3 = false;
     }
-    if(player.x > 530 && door == true){
+    if(player.x >= 530 && door == true){
         New1();
         door2 = false;
         door = false;
         door3 = false;
     }
-    if(player.x > 530 && door3 == true){
+    if(player.x >= 530 && door3 == true){
         New3();
         door2 = false;
         door = false;
@@ -48,10 +48,13 @@ function New2(){
     player.x = 10;
     player.y = 10;
 }
-
+var new3 = false;
 function New3(){
+    new3 = true;
     next1 = true;
     next2 = true;
     next3 = true;
     next4 = false;
+    player.x = 10;
+    player.y = 10;
 }
